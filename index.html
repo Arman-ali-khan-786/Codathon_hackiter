@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>TicTacToe</title>
+        <script type="text/javascript">
+             var c = 1;
+             function fill(call){
+                   if (c<=9){
+                   if ( c%2==0 ){
+                    putData(call.id,"O");
+                   }
+                   else{
+                    putData(call.id,"X");
+                   }
+                   c++;
+                   if (win()){
+                    alert(" BRAVO U WIN ");
+                    blankpage();
+                   }
+                   }else{
+                    alert (" Try next Time fellas , match draw ");
+                    blankpage();
+                   }
+                }
+             function blankpage(){
+                 for(var i=1 ; i<=9 ;i++){
+                   putData('Box'+i,"");
+                }
+                c++;
+             }
+             function win(){
+                 if (check('Box1','Box2','Box3') || check('Box1','Box5','Box9') || check('Box1','Box4','Box7') 
+                 || check('Box3','Box5','Box7') || check('Box4','Box5','Box6') || check('Box7','Box8','Box9') 
+                 || check('Box2','Box5','Box8') || check('Box3','Box6','Box9')){
+                     return true;
+                 }
+             }
+             function check(Box1,Box2,Box3){
+                 if (getDate(Box1)!="" && getDate(Box2)!="" && getDate(Box3)!="" && getDate(Box1)==getDate(Box2)
+                 && getDate(Box2)==getDate(Box3)){
+                     return true;
+                 }
+             }
+             function getDate(Box){
+                 return document.getElementById(Box).innerHTML;
+             }
+             function putData(Box,data){
+                 document.getElementById(Box).innerHTML=data;
+             }
+        </script>
+        <style type="text/css">
+          *{
+              margin: 0;
+              padding: 0;
+          }
+             body{
+                background-color: black;
+             }
+             header{
+                  position: relative;
+                  background: rgba(18, 252, 10, 0.932);
+                  height:30px;
+                  width:100%;
+                  text-align: center;
+                 }
+                span{
+                    color:blue;
+                }
+              pre{
+               font-size : 20px;
+               color : red;
+               padding : 10px 10px;
+               gap : 10px;
+                }
+             #Box1,#Box2,#Box3,#Box4,#Box5,#Box6,#Box7,#Box8,#Box9{
+                 border: 1px solid rgba(12, 253, 4, 0.932);
+                 
+                 color: rgba(45, 252, 4, 0.932);
+                 height: 200px;
+                 width: 200px;
+                 float: left;
+                 font-size: 160px;
+                 text-align: center;
+             }
+             #Box1,#Box4,#Box7{
+                 clear: left;
+                 border-left: none;
+             }
+             #Box1,#Box2,#Box3{
+                 border-top: none;
+             }
+             #Box3,#Box6,#Box9{
+                 border-right: none;
+             }
+             #Box7,#Box8,#Box9{
+                 border-bottom: none;
+             }
+             #main{
+                 margin-left: 350px;
+             }
+   
+        </style>
+    </head>
+    <body>
+    <header>
+          <p><h1>Tik<span>Tac</span>Toe</h1></p>
+    </header>
+        <div id="main">
+<pre> <u>Rules</u> :- 
+   1) 2 players only
+   2) Don't click the boxes more than once
+   3) if there is no winner click once again to exit or refresh the page</pre>
+            <div id="Box1" onclick="fill(this)"></div>
+            <div id="Box2" onclick="fill(this)"></div>
+            <div id="Box3" onclick="fill(this)"></div>
+            <div id="Box4" onclick="fill(this)"></div>
+            <div id="Box5" onclick="fill(this)"></div>
+            <div id="Box6" onclick="fill(this)"></div>
+            <div id="Box7" onclick="fill(this)"></div>
+            <div id="Box8" onclick="fill(this)"></div>
+            <div id="Box9" onclick="fill(this)"></div>
+        </div>
+    </body>
+</html>
